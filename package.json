@@ -1,0 +1,24 @@
+{
+  "name": "fastfeed-backend-transportadora",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lucascust/fastfeed-backend-transportadora.git",
+  "author": "lucascust <lucascustodio@hotmail.com.br>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "express": "^4.17.1",
+    "prettier": "^1.19.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "nodemon": "^2.0.2",
+    "sucrase": "^3.12.1"
+  }
+}
