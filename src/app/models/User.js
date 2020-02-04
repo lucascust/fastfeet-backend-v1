@@ -1,9 +1,21 @@
+import Sequelize, { Model } from 'sequelize';
 
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-  }, {});
-  return User;
-};
+class User extends Model {
+  // Parâmetro de entrada é a conexão do model
+  static init(sequelize) {
+    // Iniciando classe pai de user (Model)
+    super.init(
+      {
+        // definição das colunas (sem PK, FK e Create/Update)
+        firstName: Sequelize.STRING,
+        lastName: Sequelize.STRING,
+        email: Sequelize.STRING,
+      },
+      {
+        sequelize,
+      }
+    );
+  }
+}
+
+export default User;
