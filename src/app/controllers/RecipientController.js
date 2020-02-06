@@ -1,34 +1,34 @@
 import * as Yup from 'yup';
 
-import User from '../models/User';
+import Recipient from '../models/Recipients';
 
-class UserController {
+class RecipientController {
   async store(req, res) {
     // Schema de verificação de input usando Yup
     const schema = Yup.object().shape({
-      first_name: Yup.string(),
-      last_name: Yup.string(),
-      email: Yup.string().email(),
-      password: Yup.string().min(6),
+      name: Yup.string().max(100),
+      rua: Yup.string().max(100),
+      numero: Yup.string().max(5),
+      complemento: Yup.string().max(50),
+      estado: Yup.string().max(30),
+      cidade: Yup.string().max(50),
+      CEP: Yup.string().length(8),
     });
 
     // Teste que verifica se o req.body está dentro das regras criadas no schema
-    await schema.validate(req.body).catch(err => {
-      return res.status(400).json({ error: err.message });
-    });
-
-    // Método RocketSeat - Resposta Genérica
-    // if (!(await schema.isValid(req.body))) {
-    //   return res.status(400).json({ error: 'Validation error' });
-    // }
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation error' });
+    }
 
     // Busca no DB se existe um email correspondente
-    const userVerify = await User.findOne({ where: { email: req.body.email } });
+    const userVerify = await Recipient.findOne({
+      where: { email: req.body.email },
+    });
     if (userVerify) {
       res.status(400).json({ error: 'Email already registered.' });
     }
 
-    const { first_name, last_name, email, password } = await User.create(
+    const { first_name, last_name, email, password } = await Recipient.create(
       req.body
     );
 
@@ -65,13 +65,13 @@ class UserController {
     const { email, oldPassword } = req.body;
 
     // ID passado para dentro do request pelo middleware de auth
-    const user = await User.findByPk(req.userId);
+    const user = await Recipient.findByPk(req.userId);
 
     if (email && email !== user.email) {
-      const userExists = await User.findOne({ where: { email } });
+      const userExists = await Recipient.findOne({ where: { email } });
 
       if (userExists) {
-        return res.status(400).json({ error: 'User already exists.' });
+        return res.status(400).json({ error: 'Recipient already exists.' });
       }
     }
 
@@ -85,4 +85,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default new RecipientController();
