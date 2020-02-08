@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import Recipient from '../models/Recipients';
+import Recipient from '../models/Recipient';
 
 class RecipientController {
   async store(req, res) {
@@ -12,31 +12,44 @@ class RecipientController {
       complemento: Yup.string().max(50),
       estado: Yup.string().max(30),
       cidade: Yup.string().max(50),
-      CEP: Yup.string().length(8),
+      cep: Yup.string(),
     });
 
     // Teste que verifica se o req.body está dentro das regras criadas no schema
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation error' });
-    }
-
-    // Busca no DB se existe um email correspondente
-    const userVerify = await Recipient.findOne({
-      where: { email: req.body.email },
+    // Teste que verifica se o req.body está dentro das regras criadas no schema
+    const schemaVerify = await schema.validate(req.body).catch(err => {
+      return err.message;
     });
-    if (userVerify) {
-      res.status(400).json({ error: 'Email already registered.' });
+    if (typeof schemaVerify === 'string') {
+      return res.status(400).json({ error: schemaVerify });
     }
 
-    const { first_name, last_name, email, password } = await Recipient.create(
-      req.body
-    );
+    // // Busca no DB se existe um Recipient correspondente
+    // const userVerify = await Recipient.findOne({
+    //   where: { email: req.body.email },
+    // });
+    // if (userVerify) {
+    //   res.status(400).json({ error: 'Email already registered.' });
+    // }
+
+    const {
+      name,
+      rua,
+      numero,
+      complemento,
+      estado,
+      cidade,
+      cep,
+    } = await Recipient.create(req.body);
 
     return res.json({
-      first_name,
-      last_name,
-      email,
-      password,
+      name,
+      rua,
+      numero,
+      complemento,
+      estado,
+      cidade,
+      cep,
     });
   }
 

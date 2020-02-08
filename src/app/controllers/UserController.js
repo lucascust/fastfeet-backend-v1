@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
-
 import User from '../models/User';
+
+require('express-async-errors');
 
 class UserController {
   async store(req, res) {
@@ -13,11 +14,14 @@ class UserController {
     });
 
     // Teste que verifica se o req.body está dentro das regras criadas no schema
-    await schema.validate(req.body).catch(err => {
-      return res.status(400).json({ error: err.message });
+    const schemaVerify = await schema.validate(req.body).catch(err => {
+      return err.message;
     });
+    if (typeof schemaVerify === 'string') {
+      return res.status(400).json({ error: schemaVerify });
+    }
 
-    // Método RocketSeat - Resposta Genérica
+    // Método RocketSeat - Mensagem de erro genérica
     // if (!(await schema.isValid(req.body))) {
     //   return res.status(400).json({ error: 'Validation error' });
     // }
@@ -25,7 +29,7 @@ class UserController {
     // Busca no DB se existe um email correspondente
     const userVerify = await User.findOne({ where: { email: req.body.email } });
     if (userVerify) {
-      res.status(400).json({ error: 'Email already registered.' });
+      return res.status(400).json({ error: 'Email already registered.' });
     }
 
     const { first_name, last_name, email, password } = await User.create(

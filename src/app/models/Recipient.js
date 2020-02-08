@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class User extends Model {
+class Recipient extends Model {
   // Parâmetro de entrada é a conexão do model
   static init(sequelize) {
     // Iniciando classe pai de user (Model)
@@ -22,4 +22,4 @@ class User extends Model {
   }
 }
 
-export default User;
+export default Recipient;
