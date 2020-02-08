@@ -52,4 +52,5 @@ A API realiza uma interface simples, porém completa com as necessidades básica
   - biblioteca **bcrypt** transforma a senha inserida pelo usuário em uma hash criptografada. Para que a senha não esteja facilmente disponível no banco de dados, um método do bycript é invocado antes do armazenamento dos dados no DB através de um **hook** do Sequelize. A senha original não se mantém armazenada devido à declaração como variável **VIRTUAL** do Sequelize, fazendo-a existir apenas em código.
 #### **Autenticação**:
   - Um usuário logado é identificado através de um *token*, gerado pela biblioteca **JWT - JSON Web Token**. O *token* não permite modificações, sendo robusto à interceptações maliciosas. Algumas funcionalidades são limitadas à usuários logados, como exemplo, cadastro de remetentes.
-
+---
+Lucas Custódio - MIT License 
