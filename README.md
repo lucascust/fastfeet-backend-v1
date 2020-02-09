@@ -17,6 +17,7 @@
 
 <p align="center">
   <a href="#sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-utilizar">Como Utilizar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#funcionalidades-e-tecnologias">Funcionalidades e Tecnologias</a>
 </p>
 
@@ -26,6 +27,22 @@ O software é uma API para uma transportadora, no qual o usuário pode gerenciar
 
 **Palavras-chave: NodeJS, API Rest, Arquitetura MVC, Docker, Express, Assincronismo, Sequelize, PostgreSQL.**
 
+## Como Utilizar
+
+### 1. Clonar repositório
+
+#### Clonar repositório
+```zsh
+$ git clone https://github.com/lucascust/fastfeet-transportadora
+```
+#### Instalar dependências
+```zsh
+$ yarn install
+```
+#### Iniciar servidor
+```zsh
+$ yarn dev
+```
 
 ## Funcionalidades e Tecnologias
 
@@ -53,4 +70,4 @@ A API realiza uma interface simples, porém completa com as necessidades básica
 #### **Autenticação**:
   - Um usuário logado é identificado através de um *token*, gerado pela biblioteca **JWT - JSON Web Token**. O *token* não permite modificações, sendo robusto à interceptações maliciosas. Algumas funcionalidades são limitadas à usuários logados, como exemplo, cadastro de remetentes.
 ---
-Lucas Custódio - MIT License 
+Lucas Custódio - MIT License
