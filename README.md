@@ -10,7 +10,7 @@
 </p>
 
 
-<h1 align="center"> Backend da Transportadora Fastfeed </h1>
+<h1 align="center"> Backend da Transportadora Fastfeet </h1>
 
 <h4 align="center">Fastfeed é uma empresa fictícia, o projeto foi elaborado em prol do aprendizado. </h4>
 
