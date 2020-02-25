@@ -45,11 +45,6 @@ $ yarn dev
 ```
 
 ## Funcionalidades e Tecnologias
-<<<<<<< HEAD
-blab
-
-
-=======
 
 A API realiza uma interface simples, porém completa com as necessidades básicas de uma aplicação. Contando com cadastro, autenticação de usuário, segurança de senha e gerenciamento de banco de dados.
 
@@ -75,5 +70,4 @@ A API realiza uma interface simples, porém completa com as necessidades básica
 #### **Autenticação**:
   - Um usuário logado é identificado através de um *token*, gerado pela biblioteca **JWT - JSON Web Token**. O *token* não permite modificações, sendo robusto à interceptações maliciosas. Algumas funcionalidades são limitadas à usuários logados, como exemplo, cadastro de remetentes.
 ---
->>>>>>> parent of e610b83... Update README.md
 Lucas Custódio - MIT License
