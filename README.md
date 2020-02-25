@@ -45,7 +45,7 @@ $ yarn dev
 ```
 
 ## Funcionalidades e Tecnologias
-
+blab
 
 
 Lucas Custódio - MIT License
