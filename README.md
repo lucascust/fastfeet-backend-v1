@@ -23,7 +23,7 @@
 
 ## Sobre
 
-O software é uma API para uma transportadora, no qual o usuário pode gerenciar seus dados e informações do remetente. Ferramenta destinada apenas aos destinatários.
+API para uma transportadora, no qual o usuário pode gerenciar seus dados e informações do remetente. Ferramenta destinada apenas aos destinatários.
 
 **Palavras-chave: NodeJS, API Rest, Arquitetura MVC, Docker, Express, Assincronismo, Sequelize, PostgreSQL.**
 
