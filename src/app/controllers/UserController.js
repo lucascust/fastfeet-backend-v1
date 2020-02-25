@@ -85,6 +85,12 @@ class UserController {
 
     const { id, name, provider } = await user.update(req.body);
 
+    if (userExists) {
+      return res
+        .status(400)
+        .json({ error: 'User already exists.' })
+        .include('variableextend');
+    }
     return res.json({ id, name, email, provider });
   }
 }
