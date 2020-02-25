@@ -45,7 +45,35 @@ $ yarn dev
 ```
 
 ## Funcionalidades e Tecnologias
+<<<<<<< HEAD
 blab
 
 
+=======
+
+A API realiza uma interface simples, porém completa com as necessidades básicas de uma aplicação. Contando com cadastro, autenticação de usuário, segurança de senha e gerenciamento de banco de dados.
+
+### 1. Estrutura
+#### **Banco de dados:**
+  - **Sequelize** (ORM) utilizada para representar bancos de dados relacionais como objetos, simplificando comandos em SQL em métodos intuitivos. essa API é baseada em objetos de processamento assíncrono (*promises*), no qual permite a continuidade do código mesmo ao aguardar uma resposta de um requisição, evitando gargalos. Emprega também a técnica de "lazy loading", obtendo ganho de desempenho pelo carregamento tardio de objetos quando ainda não são necessários.
+  - **Docker** introduzido na aplicação de forma simples, isolando o banco de dados **Postgree** em um container, a fim de não permitir que o mesmo cause modificações nocivas à outras partes da API.
+
+#### **Código**:
+  - **Sucrase** permite a utilização de especificações mais recentes da linguagem, que ainda não são nativamente suportadas pelo *Node*.
+  - **editorconfig** usado para manter um estilo consistente de codificação em caso de multiplos desenvolvedores integrando a aplicação.
+  - **ESLint + Prettier** -- AirBnB Style -- configurados para auto-ajuste, elevando a agilidade de codificação e confiabilidade (evitando typos)
+
+### 2. Usuário
+#### **Cadastro e Atualização:**
+  - Método **HTTP** POST/PUT na rota '/user' para criação. É passado no corpo da requisição um **JSON** com as informações para o cadastro ou atualização do usuário.
+#### **Validação do Input:**
+  - **Yup** utilizado para criação de *schemas* que permitem validação ou transformação de valores para garantir que o usuário não insira entradas fora do previsto. Sua utilização agiliza o processo de desenvolvimento bem como aprimora a robustez dos filtros de input.
+
+### 3. Segurança
+#### **Senha**:
+  - biblioteca **bcrypt** transforma a senha inserida pelo usuário em uma hash criptografada. Para que a senha não esteja facilmente disponível no banco de dados, um método do bycript é invocado antes do armazenamento dos dados no DB através de um **hook** do Sequelize. A senha original não se mantém armazenada devido à declaração como variável **VIRTUAL** do Sequelize, fazendo-a existir apenas em código.
+#### **Autenticação**:
+  - Um usuário logado é identificado através de um *token*, gerado pela biblioteca **JWT - JSON Web Token**. O *token* não permite modificações, sendo robusto à interceptações maliciosas. Algumas funcionalidades são limitadas à usuários logados, como exemplo, cadastro de remetentes.
+---
+>>>>>>> parent of e610b83... Update README.md
 Lucas Custódio - MIT License
